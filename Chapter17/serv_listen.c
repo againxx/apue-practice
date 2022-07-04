@@ -11,7 +11,8 @@
 * Returns fd if all OK, <0 on error.
 */
 int serv_listen(const char* name) {
-    int fd, len, err, rval;
+    int fd, err, rval;
+    socklen_t len;
     struct sockaddr_un un;
     if (strlen(name) >= sizeof(un.sun_path)) {
         errno = ENAMETOOLONG;
